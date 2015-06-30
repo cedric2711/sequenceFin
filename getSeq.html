@@ -36,7 +36,8 @@
   <section>
   <input type="text" name="seqReq" id="seqReq" required>
   <button type="button" onclick="checkSeq()">Check</button>
-      
+  </br>
+   <div id="statement"></div>   
   </section>
 <script>
 function checkSeq(){debugger;
@@ -52,6 +53,9 @@ do{
 	if(newPI.indexOf(seqChar.charAt(0))!=-1){
 		
 		checkSubSeq(seqChar,newPI,1);
+		if(seqChar.length==1){
+			count++;
+		}
 	}
 	newocc=newPI.substring(1);
 	newPI=newocc.substring(newocc.indexOf(seqChar.charAt(0)));
@@ -63,7 +67,8 @@ do{
 	
 }while(m<piV.length)
 //alert(piV);
-alert(count);
+//alert(count);
+document.getElementById('statement').innerHTML='There are <span style="color:red;">'+count+'</span> occurrences of the sequence <span style="color:red;">'+seqChar+'</span> in the Value of PI upto 100,000 characters.';
 }
 </script>
 </body>
