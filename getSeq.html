@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <meta type="description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<script src="js/piValue.js"></script>
+<script src="js/seqAlg.js"></script>
+<style>
+  * { 
+    margin: 0;
+    padding: 0;
+  }
+  footer, section, header, aside, figure {
+    display: block;
+  }
+  body {
+    padding: 2em;
+    font-size: 15px;
+    font-family: helvetica, arial, sans-serif;
+  }
+  form {
+    width: 280px;
+    background: #333;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+
+</style>
+</head>
+<body>
+  <header><h1>Check Sequence</h1></header>
+  <section>
+  <input type="text" name="seqReq" id="seqReq" required>
+  <button type="button" onclick="checkSeq()">Check</button>
+      
+  </section>
+<script>
+function checkSeq(){debugger;
+count=0;
+seqChar=document.getElementById('seqReq').value;
+//alert(seqReq.length);
+var newPI=piV.substring(piV.indexOf(seqChar.charAt(0)));
+var m=0;
+do{
+	//var newPI=piV.indexOf(seqChar.charAt(0));
+	//var newPI=piV.substring(m);
+	var newocc;
+	if(newPI.indexOf(seqChar.charAt(0))!=-1){
+		
+		checkSubSeq(seqChar,newPI,0);
+	}
+	newocc=newPI.substring(1);
+	newPI=newocc.substring(newocc.indexOf(seqChar.charAt(0)));
+	if(newPI.indexOf(seqChar.charAt(0))!=-1){
+		m=newPI.indexOf(seqChar.charAt(0))
+	}else{
+		m=piV.length;
+	}
+	
+}while(m<piV.length)
+//alert(piV);
+alert(count);
+}
+</script>
+</body>
+</html>
